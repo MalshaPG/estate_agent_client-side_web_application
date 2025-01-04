@@ -1,0 +1,48 @@
+.logo {
+  width: 10%;
+  height: auto;
+}
+
+.user {
+}
+
+.navbar {
+  padding: 1rem 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
+.bg {
+  background-image: url("D:/MAL/IIT/2 year - 1 sem/ACSD/w2053740_20232325_cw2/estate_agent_client-side_web_application/public/images/searchBar_bg.jpg");
+  height: 15rem;
+  max-height: 80%;
+  background-size: cover;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchBar {
+  background-color: #ffffff;
+  opacity: 0.84;
+  position: absolute;
+  width: 60%;
+  padding: 50px;
+  border-radius: 1rem;
+}
+
+.card {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
