@@ -44,7 +44,7 @@ export default function Nav() {
 
               <li className="nav-item float-end">
                 <Link className="nav-link px-3" to="/Login">
-                  <img src="images/user.png" />
+                  <img src="images/user.png" alt="user" />
                 </Link>
               </li>
             </ul>

@@ -7,10 +7,13 @@ import Home from "./components/Home";
 import SearchBar from "./components/SearchBar";
 import AdvancedSearch from "./components/AdvancedSearch";
 import React, { useState, useEffect } from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const App = () => {
   const [properties, setProperties] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  const [search, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("/properties.json")
@@ -51,57 +54,91 @@ const App = () => {
     localStorage.removeItem("favourites");
   };
 
+  //Remove item from favourites by dragging it out
+  const handleDropFromFavourites = (property) => {
+    handleRemoveFromFavourites(property.id);
+  };
+
+  const handleSearchTerm = (term) => {
+    setSearchTerm(term);
+  };
+
+  const filteredProperties = properties.filter((property) => {
+    return (
+      property.type.toLowerCase().includes(search.toLowerCase()) ||
+      property.location.toLowerCase().includes(search.toLowerCase()) ||
+      property.bedrooms
+        .toString()
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      property.price.toString().toLowerCase().includes(search.toLowerCase()) ||
+      property.tenure.toLowerCase().includes(search.toLowerCase()) ||
+      property.added.year
+        .toString()
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      property.added.month
+        .toString()
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      property.added.day.toString().toLowerCase().includes(search.toLowerCase())
+    );
+  });
+
   return (
-    <Router>
-      <div className="App">
-        <div>
-          <Nav />
-        </div>
-
-        <div className="container">
-          <br />
+    <DndProvider backend={HTML5Backend}>
+      <Router>
+        <div className="App">
           <div>
-            <SearchBar />
+            <Nav />
           </div>
 
-          <br />
+          <div className="container">
+            <br />
+            <div>
+              <SearchBar handleSearchTerm={handleSearchTerm} />
+            </div>
 
-          <div className="content">
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={
-                  <Home
-                    properties={properties}
-                    favourites={favourites}
-                    handleAddToFavourites={handleAddToFavourites}
-                    handleRemoveFromFavourites={handleRemoveFromFavourites}
-                    handleClearFavourites={handleClearFavourites}
-                  />
-                }
-              />
-              <Route
-                exact
-                path="/Houses"
-                element={<Houses properties={properties} />}
-              />
-              <Route
-                exact
-                path="/Flats"
-                element={<Flats properties={properties} />}
-              />
+            <br />
 
-              <Route
-                exact
-                path="/AdvancedSearch"
-                element={<AdvancedSearch />}
-              />
-            </Routes>
+            <div className="content">
+              <Routes>
+                <Route
+                  exact
+                  path="/"
+                  element={
+                    <Home
+                      properties={filteredProperties}
+                      favourites={favourites}
+                      handleAddToFavourites={handleAddToFavourites}
+                      handleRemoveFromFavourites={handleRemoveFromFavourites}
+                      handleClearFavourites={handleClearFavourites}
+                      handleDropFromFavourites={handleDropFromFavourites}
+                    />
+                  }
+                />
+                <Route
+                  exact
+                  path="/Houses"
+                  element={<Houses properties={properties} />}
+                />
+                <Route
+                  exact
+                  path="/Flats"
+                  element={<Flats properties={properties} />}
+                />
+
+                <Route
+                  exact
+                  path="/AdvancedSearch"
+                  element={<AdvancedSearch />}
+                />
+              </Routes>
+            </div>
           </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </DndProvider>
   );
 };
 
