@@ -3,9 +3,6 @@
   height: auto;
 }
 
-.user {
-}
-
 .navbar {
   padding: 1rem 0;
   width: 100%;
@@ -45,4 +42,13 @@
 .card {
   position: relative;
   margin-bottom: 1.5rem;
+}
+
+footer .btn-link {
+  text-decoration: none !important;
+}
+
+footer .btn-link:hover {
+  text-decoration: underline !important;
+  background-color: transparent !important;
 }

@@ -3,6 +3,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import "./Styles.css";
 import Favourites from "./Favourites";
 import { useDrag, useDrop } from "react-dnd";
+import SearchBar from "./SearchBar";
 
 const DraggableProperty = ({ property, children }) => {
   const [{ isDragging }, drag] = useDrag({
@@ -27,6 +28,7 @@ const Home = ({
   handleRemoveFromFavourites,
   handleClearFavourites,
   handleDropFromFavourites,
+  handleSearchTerm,
 }) => {
   const [, drop] = useDrop({
     accept: "FAVOURITE",
@@ -35,20 +37,28 @@ const Home = ({
 
   return (
     <Container fluid className="home-container">
+      <SearchBar handleSearchTerm={handleSearchTerm} className="mb-4" />
       <Row>
-        <Col lg={9} xs={20} md={12} className="property-section" ref={drop}>
+        <Col
+          lg={9}
+          xs={12}
+          md={12}
+          className="property-section h-100"
+          ref={drop}
+        >
           <Row xs={1} md={2} lg={3}>
             {properties.map((property) => (
               <Col className="mb-4">
                 <DraggableProperty property={property}>
-                  <Card key={property.id} className="h-100">
+                  <Card key={property.id} className="h-100 d-flex flex-column">
                     <Card.Img
                       variant="top"
-                      class="h-40"
+                      className="h-40 homeCardImage"
+                      style={{ height: "200px", objectFit: "cover" }}
                       src={property.picture}
                       alt="property"
                     />
-                    <Card.Body>
+                    <Card.Body className="d-flex flex-column">
                       <Card.Title>Type: {property.type}</Card.Title>
                       <Card.Text>
                         <p>Price: {property.price}</p>
@@ -64,7 +74,7 @@ const Home = ({
                       </Card.Text>
 
                       <button
-                        class="btn btn-primary"
+                        class="btn btn-primary mt-auto"
                         onClick={() => handleAddToFavourites(property)}
                       >
                         Add to favourites

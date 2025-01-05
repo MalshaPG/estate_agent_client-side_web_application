@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../logo.svg";
 import "./Styles.css";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +10,7 @@ export default function Nav() {
         <div class="container">
           <div class="navbar-brand d-flex">
             <img
-              src={logo}
+              src="images/logo.svg"
               className="img-fluid me-3 float-start logo"
               alt="logo"
             />

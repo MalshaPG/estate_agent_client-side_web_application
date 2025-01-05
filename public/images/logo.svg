@@ -1,0 +1,17 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="90" fill="#2C3E50"/>
+  
+  <!-- Stylized house -->
+  <path d="M100 40 L150 80 L150 140 L50 140 L50 80 Z" fill="#3498DB"/>
+  
+  <!-- Door -->
+  <rect x="85" y="100" width="30" height="40" fill="#ECF0F1"/>
+  
+  <!-- Window -->
+  <rect x="65" y="90" width="20" height="20" fill="#ECF0F1"/>
+  <rect x="115" y="90" width="20" height="20" fill="#ECF0F1"/>
+  
+  <!-- Roof highlight -->
+  <path d="M100 40 L150 80 L100 80 Z" fill="#2980B9"/>
+</svg>

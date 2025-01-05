@@ -1,11 +1,12 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
 import Flats from "./components/Flats";
 import Houses from "./components/Houses";
 import Home from "./components/Home";
-import SearchBar from "./components/SearchBar";
 import AdvancedSearch from "./components/AdvancedSearch";
+import Footer from "./components/Footer";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -13,12 +14,16 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 const App = () => {
   const [properties, setProperties] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  const [filteredProperties, setFilteredProperties] = useState([]);
   const [search, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("/properties.json")
       .then((response) => response.json())
-      .then((data) => setProperties(data.properties))
+      .then((data) => {
+        setProperties(data.properties);
+        setFilteredProperties(data.properties);
+      })
       .catch((error) => console.error("Error fetching data", error));
 
     // Load favourites from local storage
@@ -59,46 +64,65 @@ const App = () => {
     handleRemoveFromFavourites(property.id);
   };
 
-  const handleSearchTerm = (term) => {
-    setSearchTerm(term);
+  const handleSearch = (searchCriteria) => {
+    const filtered = properties.filter((property) => {
+      const typeMatch =
+        searchCriteria.type === "any" ||
+        property.type.toLowerCase() === searchCriteria.type.toLowerCase();
+      const priceMatch =
+        (!searchCriteria.minPrice ||
+          property.price >= searchCriteria.minPrice) &&
+        (!searchCriteria.maxPrice || property.price <= searchCriteria.maxPrice);
+      const bedroomsMatch =
+        !searchCriteria.bedrooms ||
+        property.bedrooms === searchCriteria.bedrooms;
+      const dateAddedMatch =
+        !searchCriteria.dateAdded ||
+        new Date(
+          property.added.year,
+          property.added.month - 1,
+          property.added.day
+        ) >= searchCriteria.dateAdded;
+      const postcodeMatch =
+        !searchCriteria.postCodeArea ||
+        property.location
+          .toLowerCase()
+          .includes(searchCriteria.postCodeArea.toLowerCase());
+
+      return (
+        typeMatch &&
+        priceMatch &&
+        bedroomsMatch &&
+        dateAddedMatch &&
+        postcodeMatch
+      );
+    });
+
+    setFilteredProperties(filtered);
   };
 
-  const filteredProperties = properties.filter((property) => {
-    return (
-      property.type.toLowerCase().includes(search.toLowerCase()) ||
-      property.location.toLowerCase().includes(search.toLowerCase()) ||
-      property.bedrooms
-        .toString()
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      property.price.toString().toLowerCase().includes(search.toLowerCase()) ||
-      property.tenure.toLowerCase().includes(search.toLowerCase()) ||
-      property.added.year
-        .toString()
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      property.added.month
-        .toString()
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      property.added.day.toString().toLowerCase().includes(search.toLowerCase())
+  //Search items in the search bar using one term
+  const handleSearchTerm = (term) => {
+    setSearchTerm(term);
+    const filtered = properties.filter((property) =>
+      Object.values(property).some(
+        (value) =>
+          typeof value === "string" &&
+          value.toLowerCase().includes(term.toLowerCase())
+      )
     );
-  });
+    setFilteredProperties(filtered);
+  };
 
   return (
     <DndProvider backend={HTML5Backend}>
       <Router>
         <div className="App">
           <div>
-            <Nav />
+            <Nav classNam="nav" />
           </div>
 
           <div className="container">
-            <br />
-            <div>
-              <SearchBar handleSearchTerm={handleSearchTerm} />
-            </div>
-
             <br />
 
             <div className="content">
@@ -110,6 +134,7 @@ const App = () => {
                     <Home
                       properties={filteredProperties}
                       favourites={favourites}
+                      handleSearchTerm={handleSearchTerm}
                       handleAddToFavourites={handleAddToFavourites}
                       handleRemoveFromFavourites={handleRemoveFromFavourites}
                       handleClearFavourites={handleClearFavourites}
@@ -131,11 +156,12 @@ const App = () => {
                 <Route
                   exact
                   path="/AdvancedSearch"
-                  element={<AdvancedSearch />}
+                  element={<AdvancedSearch onSearch={handleSearch} />}
                 />
               </Routes>
             </div>
           </div>
+          <Footer className="footer" />
         </div>
       </Router>
     </DndProvider>

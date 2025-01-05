@@ -2,26 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Styles.css";
 
-export default function SearchBar() {
+const SearchBar = ({ handleSearchTerm }) => {
   return (
-    <div className="bg">
+    <div className="bg mb-4">
       <div className="searchBar">
         <input
           type="text"
           placeholder="Search properties..."
-          // onChange={(e) => handleSearch(e.target.value)}
+          onChange={(e) => handleSearchTerm(e.target.value)}
+          className="form-control mb-2 "
         />
-        <button className="btn btn-primary mx-2 mb-2 button">Sale</button>
-        <button className="btn btn-primary mx-2 mb-2 button">Rent</button>
-        <br />
-        {/* <button class="btn btn-primary mx-2 mt-2" type="submit">
-          Search
-        </button> */}
 
         <div>
-          <Link to="/AdvancedSearch">Advanced Search</Link>
+          <Link to="/AdvancedSearch" className="btn btn-link">
+            Advanced Search
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default SearchBar;
