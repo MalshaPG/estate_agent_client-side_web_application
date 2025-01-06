@@ -5,6 +5,7 @@ import Houses from "./components/Houses";
 import Home from "./components/Home";
 import AdvancedSearch from "./components/AdvancedSearch";
 import Footer from "./components/Footer";
+import PropertyDetails from "./components/PropertyDetails";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from "react";
@@ -12,11 +13,13 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 const App = () => {
+  //State variables for managing properties, favourites and search
   const [properties, setProperties] = useState([]);
   const [favourites, setFavourites] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [search, setSearchTerm] = useState("");
 
+  //Fetch properties from the properties.json file and set the state
   useEffect(() => {
     fetch("/properties.json")
       .then((response) => response.json())
@@ -24,6 +27,7 @@ const App = () => {
         setProperties(data.properties);
         setFilteredProperties(data.properties);
       })
+      //If an error occurs, log it to the console
       .catch((error) => console.error("Error fetching data", error));
 
     // Load favourites from local storage
@@ -32,7 +36,7 @@ const App = () => {
     setFavourites(storedFavourites);
   }, []);
 
-  //Add property to thefavourites it only it is not already in the favourites
+  //Add property to the favourites it only it is not already in the favourites
   const handleAddToFavourites = (property) => {
     const isAlreadyFavourite = favourites.some((fav) => fav.id === property.id);
     if (!isAlreadyFavourite) {
@@ -64,31 +68,47 @@ const App = () => {
     handleRemoveFromFavourites(property.id);
   };
 
+  //Handle advanced search using multiple search criteria
   const handleSearch = (searchCriteria) => {
     const filtered = properties.filter((property) => {
+      // Check if the property type matches
       const typeMatch =
         searchCriteria.type === "any" ||
         property.type.toLowerCase() === searchCriteria.type.toLowerCase();
+
+      // Check if the price is within the specified range
       const priceMatch =
         (!searchCriteria.minPrice ||
-          property.price >= searchCriteria.minPrice) &&
-        (!searchCriteria.maxPrice || property.price <= searchCriteria.maxPrice);
+          property.price >= Number(searchCriteria.minPrice)) &&
+        (!searchCriteria.maxPrice ||
+          property.price <= Number(searchCriteria.maxPrice));
+
+      // Check if the number of bedrooms is within the specified range
       const bedroomsMatch =
-        !searchCriteria.bedrooms ||
-        property.bedrooms === searchCriteria.bedrooms;
+        (!searchCriteria.minBedrooms ||
+          property.bedrooms >= Number(searchCriteria.minBedrooms)) &&
+        (!searchCriteria.maxBedrooms ||
+          property.bedrooms <= Number(searchCriteria.maxBedrooms));
+
+      // Check if the date added is within the specified range
+      const propertyDate = new Date(
+        property.added.year,
+        property.added.month - 1,
+        property.added.day
+      );
       const dateAddedMatch =
-        !searchCriteria.dateAdded ||
-        new Date(
-          property.added.year,
-          property.added.month - 1,
-          property.added.day
-        ) >= searchCriteria.dateAdded;
+        (!searchCriteria.startDate ||
+          propertyDate >= searchCriteria.startDate) &&
+        (!searchCriteria.endDate || propertyDate <= searchCriteria.endDate);
+
+      // Check if the postcode area matches
       const postcodeMatch =
         !searchCriteria.postCodeArea ||
         property.location
           .toLowerCase()
           .includes(searchCriteria.postCodeArea.toLowerCase());
 
+      // Return true if all criteria match
       return (
         typeMatch &&
         priceMatch &&
@@ -127,6 +147,7 @@ const App = () => {
 
             <div className="content">
               <Routes>
+                {/* Define route for different pages */}
                 <Route
                   exact
                   path="/"
@@ -157,6 +178,11 @@ const App = () => {
                   exact
                   path="/AdvancedSearch"
                   element={<AdvancedSearch onSearch={handleSearch} />}
+                />
+
+                <Route
+                  path="/property/:id"
+                  element={<PropertyDetails properties={properties} />}
                 />
               </Routes>
             </div>

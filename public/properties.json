@@ -3,15 +3,21 @@
         {
             "id":"prop1",
 			"type":"House",
-            "bedrooms":3,
+            "bedrooms":4,
 			"price":750000,
 			"tenure":"Freehold",
-			"description":"Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-			"location":"Petts Wood Road, Petts Wood, Orpington BR5",
-			"picture":"images/property1_1.jpg",
-			"url":"properties/prop1.html",
+			"description":"Perfected Modern Living: Your Ideal House Is Waiting for You Experience sophisticated living in this well-thought-out one-story house that skillfully combines design and utility. Enter an open-concept living area where flowing design and natural light provide the ideal ambiance for both elegant events and family get-togethers. Any foodie will be delighted by the gourmet kitchen's high-end appliances, generous surface space, and well-considered storage options.Unwind in the secluded master bedroom suite, which has a spa-style bathroom with an opulent soaking tub. For an active lifestyle, the attached garage provides extra storage and safe parking. This home is the pinnacle of modern comfort because to its strategically placed built-in storage options and clever floor arrangement.",
+			"location":"yahalatenna, Kandy, Sri Lanka",
+			"picture":"/images/property1_1.jpg",
+            "images": [
+                "/images/property1_2.jpg", 
+                "/images/property1_3.jpg",
+                "/images/property1_4.jpg",
+                "/images/property1_5.jpg",
+                "/images/property1_6.jpg"],
+            "floorPlan": "/images/property1_floorplan.jpg",
             "added": {
-                "month":"October",
+                "month":"January",
                 "day":12,
                 "year":2022
             }
@@ -19,17 +25,23 @@
 		{
             "id":"prop2",
 			"type":"House",
-            "bedrooms":2,
+            "bedrooms":3,
 			"price":399995,
 			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/property2_1.jpg",
-			"url":"properties/prop2.html",
+			"description":"Gorgeous Loft Living in Negambo: Where Elegance and Industry Collide Discover the pinnacle of contemporary living in this stunning loft-style home, which boasts exposed brick walls, high ceilings, and industrial-chic design features that unquestionably create a sophisticated ambiance. A dramatic two-story living area filled with natural light from floor-to-ceiling windows, designer lighting fixtures, and elegant architectural features are all featured in the well-thought-out open floor plan. With stainless steel equipment and contemporary cabinets, the gourmet kitchen easily blends into the dining room, making it ideal for both daily use and entertaining. With two luxurious bathrooms and three spacious bedrooms, including a master suite, this house provides privacy and space for the entire family. The spiral staircase leads to the upper level and acts as an artistic focal point.",
+			"location":"Negambo,western province, Sri Lanka",
+			"picture":"/images/property2_1.jpg",
+            "images": [ 
+                "/images/property2_2.jpg", 
+                "/images/property2_3.jpg",
+                "/images/property2_4.jpg",
+                "/images/property2_5.jpg",
+                "/images/property2_6.jpg"],
+            "floorPlan": "/images/property2_floorPlan.jpg",
             "added": {
                 "month":"September",
-                "day":14,
-                "year":2022
+                "day":2,
+                "year":2010
             }
         },
 
@@ -37,50 +49,68 @@
             "id":"prop3",
 			"type":"House",
             "bedrooms":2,
-			"price":399995,
+			"price":150000,
 			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/property3_1.jpg",
-			"url":"properties/prop2.html",
+			"description":"Modern luxury in Godagama With its dramatic external lighting and modern construction, this gorgeous two-bedroom freehold property exudes modern elegance and makes a stunning first impression against the Sri Lankan sunset. The well-planned floor plan has large living spaces that are ideal for entertaining and relaxing because of the well-placed windows that let in plenty of natural light. With its luxurious amenities and generous counter space, the contemporary kitchen flows naturally into an open-concept dining area that's perfect for family get-togethers. The well-appointed bathrooms, which have modern fixtures and finishes, complement the spacious and private bedrooms. The outside of the property is exquisitely planted, with well-kept gardens and soft lighting, making your new house feel welcoming. Situated in Matara's coveted Godagama neighborhood, this elegant home",
+			"location":"Godagama, Matara, Sri Lanka",
+			"picture":"/images/property3_1.jpg",
+            "images": [
+                "/images/property3_2.jpg", 
+                "/images/property3_3.jpg",
+                "/images/property3_4.jpg",
+                "/images/property3_5.jpg",
+                "/images/property3_6.jpg"], 
+            "floorPlan": "/images/property3_floorPlan.jpg",
             "added": {
-                "month":"September",
+                "month":"December",
                 "day":14,
-                "year":2022
+                "year":2023
             }
         },
 
         {
             "id":"prop4",
 			"type":"Flat",
-            "bedrooms":2,
+            "bedrooms":3,
 			"price":399995,
 			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/property4_1.jpg",
-			"url":"properties/prop2.html",
+			"description":"The Best of City Living Located in the center of Colombo 7, this chic two-bedroom freehold apartment combines contemporary style with city conveniences. The open-concept living and dining space in the well-thought-out floor plan is ideal for hosting visitors as well as relaxing. Modern equipment and an organized work area in the kitchen make it easy to prepare meals while yet connecting to the living area. Both bedrooms have ample natural light and roomy proportions, making them cozy places to relax and have privacy. The apartment has two tastefully furnished bathrooms with contemporary fixtures, one of which is ideally situated for visitors close to the living area. This apartment, which is located in the affluent Colombo 7 neighborhood, provides the ideal balance of comfort and accessibility, with quick access to the best facilities in the city.",
+			"location":"Colombo 7, Sri Lanka",
+			"picture":"/images/property4_1.jpg",
+            "images": [
+                "/images/property4_2.jpg", 
+                "/images/property4_3.jpg",
+                "/images/property4_4.jpg",
+                "/images/property4_5.jpg",
+                "/images/property4_6.jpg"], 
+            "floorPlan": "/images/property4_floorPlan.jpg",
             "added": {
-                "month":"September",
-                "day":14,
-                "year":2022
+                "month":"March",
+                "day":5,
+                "year":2021
             }
         },
 
         {
             "id":"prop5",
 			"type":"House",
-            "bedrooms":2,
-			"price":399995,
+            "bedrooms":3,
+			"price":400000,
 			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/property5_1.jpg",
-			"url":"properties/prop2.html",
+			"description":"Beautiful Trincolamee Countryside Home. Explore this charming two-bedroom freehold cottage that offers the ideal fusion of contemporary comfort and rustic charm, tucked away in the tranquil Trincolamee woodlands. An open-concept living area with several seating places is part of the well-thought-out floor plan, making it ideal for both peaceful evenings and family get-togethers. Every meal is made more wonderful by the well-appointed kitchen's distinctive octagonal dining nook, which offers expansive views of the surrounding landscape. The home's inviting front porch with ambient lighting is the ideal place for morning coffee or evening relaxation, while two cozy bedrooms offer tranquil havens. With its exquisitely planted grounds and raised stone foundation, the villa blends in perfectly with the surrounding natural woodland. Situated in a peaceful neighborhood",
+			"location":"Trincolamee, Sri Lanka",
+			"picture":"/images/property5_1.jpg",
+            "images": [
+                "/images/property5_2.jpg", 
+                "/images/property5_3.jpg",
+                "/images/property5_4.jpg",
+                "/images/property5_5.jpg",
+                "/images/property5_6.jpg"], 
+            "floorPlan": "/images/property5_floorPlan.jpg",
             "added": {
                 "month":"September",
                 "day":14,
-                "year":2022
+                "year":2024
             }
         },
 
@@ -88,15 +118,21 @@
             "id":"prop6",
 			"type":"Flat",
             "bedrooms":2,
-			"price":399995,
+			"price":250000,
 			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/property6_1.jpg",
-			"url":"properties/prop2.html",
+			"description":"Prime Modern Living Colombo 4:Located in one of the most desirable high-rises in Colombo, this modern two-bedroom freehold apartment offers elegant urban living. A large living area that connects to a private balcony is part of the well-thought-out floor plan, which seamlessly combines indoor and outdoor living areas. The contemporary kitchen's streamlined appliances and effective layout make it ideal for both regular meals and entertaining. Comfortable retreats are offered by two tastefully furnished bedrooms, each of which has a chic bathroom with modern amenities. The apartment's ingenious design makes the most of available space and natural light, while the built-in garage provides safe parking for your car. This upscale property, which is conveniently located in the center of Colombo 4, offers quick access to the best dining, entertainment, and shopping options in the city.",
+			"location":"Colombo 4, Sri Lanka",
+			"picture":"/images/property6_1.jpg",
+            "images": [
+                "/images/property6_2.jpg", 
+                "/images/property6_3.jpg",
+                "/images/property6_4.jpg",
+                "/images/property6_5.jpg",
+                "/images/property6_6.jpg"], 
+            "floorPlan": "/images/property6_floorPlan.jpg",
             "added": {
-                "month":"September",
-                "day":14,
+                "month":"February",
+                "day":2,
                 "year":2022
             }
         },
@@ -104,19 +140,27 @@
         {
             "id":"prop7",
 			"type":"Flat",
-            "bedrooms":2,
-			"price":399995,
+            "bedrooms":3,
+			"price":644000,
 			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/property7_1.jpg",
-			"url":"properties/prop2.html",
+			"description":"This gorgeous apartment in Ududumbara, Kandy, Sri Lanka, offers a special fusion of contemporary conveniences and historic charm. This freehold home, which is priced at Rs. 644000, has two roomy bedrooms and is a great option for families or single people looking for a cozy place to live. With elaborate balcony railings and fine granite that enhance its visual attractiveness, the building's construction is a tribute to traditional style. Residents can enjoy a tranquil setting while being close to Kandy's conveniences because to the property's location in the charming and tranquil Ududumbara neighborhood. The majesty of the edifice and the nice weather that is typical of the area are emphasized by the clear blue sky in the background.",
+			"location":"Ududumbara, Kandy, Sri Lanka",
+			"picture":"/images/property7_1.jpg",
+            "images": [
+                "/images/property7_2.jpg", 
+                "/images/property7_3.jpg",
+                "/images/property7_4.jpg",
+                "/images/property7_5.jpg",
+                "/images/property7_6.jpg"], 
+            "floorPlan": "/images/property7_floorPlan.jpg",
             "added": {
-                "month":"September",
+                "month":"April",
                 "day":14,
-                "year":2022
+                "year":2020
             }
         }
+
+        
 
 
 ]}

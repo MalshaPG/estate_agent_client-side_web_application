@@ -4,7 +4,9 @@ import "./Styles.css";
 import Favourites from "./Favourites";
 import { useDrag, useDrop } from "react-dnd";
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
+//Component for draggable property
 const DraggableProperty = ({ property, children }) => {
   const [{ isDragging }, drag] = useDrag({
     type: "PROPERTY",
@@ -30,6 +32,7 @@ const Home = ({
   handleDropFromFavourites,
   handleSearchTerm,
 }) => {
+  //Set up drop target for removing properties from favourites
   const [, drop] = useDrop({
     accept: "FAVOURITE",
     drop: (item) => handleDropFromFavourites(item.property),
@@ -37,19 +40,18 @@ const Home = ({
 
   return (
     <Container fluid className="home-container">
-      <SearchBar handleSearchTerm={handleSearchTerm} className="mb-4" />
+      {/* Search bar component */}
+      <SearchBar handleSearchTerm={handleSearchTerm} className="mb-5" />
+
       <Row>
-        <Col
-          lg={9}
-          xs={12}
-          md={12}
-          className="property-section h-100"
-          ref={drop}
-        >
-          <Row xs={1} md={2} lg={3}>
+        {/* Property listing section */}
+        <Col lg={9} xs={12} className="property-section h-100" ref={drop}>
+          <Row xs={1} lg={3} className="g-4">
+            {/* Loop through properties and display each one */}
             {properties.map((property) => (
               <Col className="mb-4">
                 <DraggableProperty property={property}>
+                  {/* Crad componet for each item in the properties list */}
                   <Card key={property.id} className="h-100 d-flex flex-column">
                     <Card.Img
                       variant="top"
@@ -63,16 +65,17 @@ const Home = ({
                       <Card.Text>
                         <p>Price: {property.price}</p>
                         <p>Bedrooms: {property.bedrooms}</p>
-                        <p>Tenure: {property.tenure}</p>
-                        <p>Description: {property.description}</p>
                         <p>Location: {property.location}</p>
-                        <p>URL: {property.url}</p>
                         <p>
                           Added date: {property.added.month}{" "}
                           {property.added.day} {property.added.year}
                         </p>
+                        <Link to={`/property/${property.id}`}>
+                          More Details
+                        </Link>
                       </Card.Text>
 
+                      {/* Button to add properties to favourites */}
                       <button
                         class="btn btn-primary mt-auto"
                         onClick={() => handleAddToFavourites(property)}
@@ -87,9 +90,11 @@ const Home = ({
           </Row>
         </Col>
 
+        {/* Favourites Section */}
         <Col
           lg={3}
-          className="favourite-section border border-dark rounded mb-3 bg-light"
+          xs={12}
+          className="favourite-section border border-2 border-dark rounded mb-3 bg-light"
         >
           <div className="favourite-container">
             <Favourites

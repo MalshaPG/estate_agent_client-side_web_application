@@ -6,16 +6,18 @@ const SearchBar = ({ handleSearchTerm }) => {
   return (
     <div className="bg mb-4">
       <div className="searchBar">
+        {/* Imput for search term */}
         <input
           type="text"
-          placeholder="Search properties..."
+          placeholder="Search properties using one word..."
           onChange={(e) => handleSearchTerm(e.target.value)}
           className="form-control mb-2 "
         />
 
+        {/* Link to advanced search */}
         <div>
           <Link to="/AdvancedSearch" className="btn btn-link">
-            Advanced Search
+            <p className="AdvancedSearch">Advanced Search</p>
           </Link>
         </div>
       </div>

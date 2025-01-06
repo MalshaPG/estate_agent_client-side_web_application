@@ -1,39 +1,54 @@
 import React, { useState } from "react";
 import DropdownList from "react-widgets/DropdownList";
 import { Row, Col, Button } from "react-bootstrap";
-import DatePicker from "react-widgets/DatePicker";
-import NumberPicker from "react-widgets/NumberPicker";
 import "react-widgets/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./Styles.css";
+import { DatePicker } from "react-widgets/cjs";
 
 export default function AdvancedSearch({ onSearch }) {
+  const navigate = useNavigate();
+
+  //State to store search criterias
   const [searchCriteria, setSearchCriteria] = useState({
     type: "any",
-    bedrooms: "",
+    minBedrooms: "",
+    maxBedrooms: "",
     minPrice: "",
     maxPrice: "",
-    dateAdded: null,
+    startDate: null,
+    endDate: null,
     postCodeArea: "",
   });
 
+  //Handle input changes in search critierias
   const handleInputChange = (name, value) => {
     setSearchCriteria((prev) => ({ ...prev, [name]: value }));
   };
 
+  //Handle the submission of the form
+  //1.Search for the result
+  //2.Navigate to Home page and diplay the result
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(searchCriteria);
+    navigate("/");
   };
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit} className="container border border-2 p-3">
-        <h1 className="pb-3 border-bottom">Advanced Search</h1>
-        <div className="container mt-3">
+    <div className="container mt-5">
+      <form
+        onSubmit={handleSubmit}
+        className="border border-2 rounded p-4 shadow-sm bg-light"
+      >
+        <h1 className="pb-3 border-bottom text-primary">Advanced Search</h1>
+        <div className="mt-3">
+          {/* Row 1: Property Type & Bedrooms */}
           <Row className="mb-4 align-items-center">
-            <Col lg={6}>
-              <p>Property type:</p>
+            {/* In Larger spans 6 grid spaces and on extra-smaller screens, 12 grid spaces (full width) */}
+            <Col lg={6} xs={12}>
+              <label className="form-label fw-bold">Property Type:</label>
               <DropdownList
                 value={searchCriteria.type}
                 onChange={(value) => handleInputChange("type", value)}
@@ -42,55 +57,109 @@ export default function AdvancedSearch({ onSearch }) {
               />
             </Col>
 
-            <Col lg={6}>
-              <label className="form-label fw-bold">No. of Bedrooms: </label>
-              <NumberPicker
-                value={searchCriteria.bedrooms}
-                onChange={(value) => handleInputChange("bedrooms", value)}
-                min={0}
-                max={10}
-                className="w-100"
-              />
+            <Col lg={6} xs={12}>
+              <label className="form-label fw-bold">Bedrooms:</label>
+              <div className="d-flex justify-content-center">
+                <div className="d-flex">
+                  <input
+                    type="number"
+                    value={searchCriteria.minBedrooms}
+                    onChange={(e) =>
+                      handleInputChange(
+                        "minBedrooms",
+                        parseInt(e.target.value, 10) || 0
+                      )
+                    }
+                    min={1}
+                    max={10}
+                    placeholder="Min"
+                    className="form-control w-50 me-2"
+                  />
+
+                  <input
+                    type="number"
+                    value={searchCriteria.maxBedrooms}
+                    onChange={(e) =>
+                      handleInputChange(
+                        "maxBedrooms",
+                        parseInt(e.target.value, 10) || 0
+                      )
+                    }
+                    min={1}
+                    max={10}
+                    placeholder="Max"
+                    className="form-control w-50 me-2"
+                  />
+                </div>
+              </div>
             </Col>
           </Row>
+
+          {/* Row 2: Price Range */}
           <Row className="mb-4">
-            <Col>
-              <label className="form-label fw-bold">Price Range: </label>
-              <div className="d-flex align-items-center">
-                <NumberPicker
+            <Col lg={6} xs={12}>
+              <label className="form-label fw-bold">Price Range:</label>
+              <div className="d-flex">
+                <input
+                  type="number"
                   value={searchCriteria.minPrice}
-                  onChange={(value) => handleInputChange("minPrice", value)}
-                  min={0}
+                  onChange={(e) =>
+                    handleInputChange(
+                      "minPrice",
+                      parseInt(e.target.value, 10) || 100000
+                    )
+                  }
+                  min={100000}
                   max={1000000}
                   step={1000}
-                  className="w-50 me-2"
                   placeholder="Min"
+                  className="form-control w-50 me-2"
                 />
-                <NumberPicker
+
+                <input
+                  type="number"
                   value={searchCriteria.maxPrice}
-                  onChange={(value) => handleInputChange("maxPrice", value)}
-                  min={0}
+                  onChange={(e) =>
+                    handleInputChange(
+                      "maxPrice",
+                      parseInt(e.target.value, 10) || 100000
+                    )
+                  }
+                  min={100000}
                   max={1000000}
                   step={1000}
-                  className="w-50"
                   placeholder="Max"
+                  className="form-control w-50"
                 />
               </div>
             </Col>
+          </Row>
 
-            <Col lg={6}>
-              <label className="form-label fw-bold">Date Added: </label>
+          {/* Row 3: Date Range */}
+          <Row className="mb-4">
+            <Col lg={6} xs={12}>
+              <label className="form-label fw-bold">Start Date:</label>
               <DatePicker
-                value={searchCriteria.dateAdded}
-                onChange={(value) => handleInputChange("dateAdded", value)}
-                valueFormat={{ dateStyle: "medium" }}
+                value={searchCriteria.startDate}
+                onChange={(value) => handleInputChange("startDate", value)}
+                className="w-100"
+              />
+            </Col>
+
+            <Col lg={6} xs={12}>
+              <label className="form-label fw-bold">End Date:</label>
+              <DatePicker
+                value={searchCriteria.endDate}
+                onChange={(value) => handleInputChange("endDate", value)}
                 className="w-100"
               />
             </Col>
           </Row>
+
+          {/* Row 4: Post Code/Area */}
           <Row className="mb-4">
-            <Col>
-              <label className="form-label fw-bold">Post Code/Area: </label>
+            <Col xs={12}>
+              <label className="form-label fw-bold">Post Code/Area:</label>
               <input
                 type="text"
                 id="PostCodeArea"
@@ -104,19 +173,12 @@ export default function AdvancedSearch({ onSearch }) {
             </Col>
           </Row>
 
+          {/*Submit buttons */}
           <Row>
-            <Col>
+            <Col xs={12}>
               <Button type="submit" className="btn btn-primary">
                 Search
               </Button>
-              <p>
-                (Please click search button first and then click the below
-                button to see the result)
-              </p>
-
-              <Link to="/" className="bg-primary p-2 rounded text-white">
-                See the result
-              </Link>
             </Col>
           </Row>
         </div>
