@@ -1,6 +1,59 @@
-# Getting Started with Create React App
+# Estate Agent Client-Side Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+
+A client-side web application for estate agents built with React, featuring modern UI components and drag-and-drop functionality.
+
+## Prerequisites
+
+- Node.js (version 14.0.0 or higher recommended)
+- npm (Node Package Manager)
+
+## Preffered Browser
+
+Google Chrome
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone [your-repository-url]
+cd estate_agent_client-side_web_application
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+## Dependencies
+
+This project uses several key dependencies:
+
+### Core Dependencies
+
+- React (v19.0.0)
+- React DOM (v19.0.0)
+- React Router DOM (v7.1.1)
+- React Scripts (v5.0.1)
+
+### Additional Packages
+
+- **Bootstrap (v5.3.3)** - Front-end framework for responsive design
+- **React Bootstrap (v2.10.7)** - React components built on Bootstrap
+- **React DnD (v16.0.1)** - Drag and drop functionality
+- **React DnD HTML5 Backend (v16.0.1)** - HTML5 backend for drag and drop
+- **React Widgets (v5.8.6)** - Set of form inputs and widgets
+- **React Tabs (v6.1.0)** - Tab component for React
+- **Date-fns (v4.1.0)** - Date utility library
+- **DOMPurify: (v3.2.3)** - Client-side security
+
+### Development Dependencies
+
+- Various testing libraries (@testing-library/jest-dom, @testing-library/react, @testing-library/user-event)
+- Babel plugin for private property transformation
 
 ## Available Scripts
 
@@ -8,63 +61,45 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production to the `build` folder.
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**\
+Ejects the create-react-app configuration files.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Browser Support
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Production
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Browser market share > 0.2%
+- Not dead
+- Not Opera Mini
 
-## Learn More
+### Development
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Latest versions of:
+  - Chrome
+  - Firefox
+  - Safari
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Resources
 
-### Code Splitting
+Images - https://www.freepik.com/images - https://unsplash.com/s/photos/real-estate
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
 
-### Analyzing the Bundle Size
+[Add your contribution guidelines here]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## License
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Add your license information here]

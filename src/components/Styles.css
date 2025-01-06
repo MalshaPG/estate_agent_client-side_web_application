@@ -1,8 +1,89 @@
+@import "react-widgets/styles.css";
+
+/*media queries for devices with max-width of 768px or less */
+@media (max-width: 768px) {
+  /* media queries for advanced search page */
+  .form-label {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  /* media queries for Home page(result) */
+  .home-container {
+    padding: 0 15px;
+  }
+
+  .property-section {
+    margin-bottom: 20px;
+  }
+
+  .favourite-section {
+    height: 100%;
+  }
+
+  .homeCardImage {
+    height: 150px !important;
+  }
+
+  /* media queies for property details displaying page */
+  .property-details-container {
+    padding: 10px;
+  }
+
+  .property-info {
+    text-align: center;
+  }
+
+  .property-info h2 {
+    font-size: 1.3rem;
+  }
+
+  .property-info p {
+    font-size: 1rem;
+  }
+
+  /* media queries for SearchBar */
+  .AdvancedSearch {
+    font-size: 0.9rem !important;
+  }
+
+  /* media quieries for the footer */
+  p.fs-5 {
+    font-size: 0.8rem !important;
+  }
+
+  p.fs-6 {
+    font-size: 0.7rem !important;
+  }
+
+  /* Responsive styles for the nav bar*/
+  @media (max-width: 768px) {
+    .navbar .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav-links {
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li {
+      margin: 0.5rem 1rem 0.5rem 0;
+    }
+  }
+}
+
+/* Styles for Logo */
 .logo {
   width: 10%;
   height: auto;
 }
 
+/* Styles for nav bar */
 .navbar {
   padding: 1rem 0;
   width: 100%;
@@ -10,7 +91,31 @@
   border-bottom: 1px solid #e3e3e3;
 }
 
+.navbar.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link li {
+  margin-left: 1rem;
+}
+
+.nav-link a {
+  text-decoration: none;
+  color: #000;
   font-weight: 500;
   transition: color 0.3s ease;
 }
@@ -19,6 +124,7 @@
   color: #0d6efd !important;
 }
 
+/* Styles for the Search bar */
 .bg {
   background-image: url("D:/MAL/IIT/2 year - 1 sem/ACSD/w2053740_20232325_cw2/estate_agent_client-side_web_application/public/images/searchBar_bg.jpg");
   height: 15rem;
@@ -39,11 +145,13 @@
   border-radius: 1rem;
 }
 
+/* Styles for Card */
 .card {
   position: relative;
   margin-bottom: 1.5rem;
 }
 
+/* Styles for the footer */
 footer .btn-link {
   text-decoration: none !important;
 }

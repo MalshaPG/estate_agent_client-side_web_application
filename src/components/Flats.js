@@ -2,15 +2,20 @@ import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import "./Styles.css";
 
+//Functional component to display flats
 const Flats = ({ properties }) => {
   return (
-    <div>
+    <Container>
       <h1>Flats</h1>
-      <Row>
+      {/*Different column sizes for different screen sizes */}
+      <Row xs={6} md={8} className="mt-4">
+        {/* Iterate over the properties array to filter and display flats */}
         {properties?.map((property) => {
+          //Check if the property type is flat
           if (property.type === "Flat") {
             return (
-              <Col lg={4} md={3} xs={1} className="mb-4">
+              <Col lg={4} md={4} xs={6} className="mb-4">
+                {/* Crad component to display property details */}
                 <Card key={property.id} className="h-100 mt-2">
                   <img
                     class="card-img-top"
@@ -22,9 +27,7 @@ const Flats = ({ properties }) => {
                     <p>Price: {property.price}</p>
                     <p>Bedrooms: {property.bedrooms}</p>
                     <p>Tenure: {property.tenure}</p>
-                    <p>Description: {property.description}</p>
                     <p>Location: {property.location}</p>
-                    <p>URL: {property.url}</p>
                     <p>
                       Added date: {property.added.month} {property.added.day}{" "}
                       {property.added.year}
@@ -34,10 +37,11 @@ const Flats = ({ properties }) => {
               </Col>
             );
           }
+          //Return null if the property type is not flat
           return null;
         })}
       </Row>
-    </div>
+    </Container>
   );
 };
 

@@ -4,13 +4,19 @@ import "./Styles.css";
 
 const Houses = ({ properties }) => {
   return (
-    <div>
+    <Container>
       <h1>Houses</h1>
-      <Row>
+      <Row xs={6} md={8} className="mt-4">
+        {/* Iterate over all the properties to filter and dispaly Houses */}
         {properties?.map((property) => {
           if (property.type === "House") {
             return (
-              <Col lg={3} md={2} xs={1} className="mb-4">
+              <Col
+                lg={6}
+                md={6}
+                xs={6}
+                className="mb-4 d-flex align-items-center"
+              >
                 <Card key={property.id} className="h-100 mt-2">
                   <img
                     class="card-img-top"
@@ -22,9 +28,7 @@ const Houses = ({ properties }) => {
                     <p>Price: {property.price}</p>
                     <p>Bedrooms: {property.bedrooms}</p>
                     <p>Tenure: {property.tenure}</p>
-                    <p>Description: {property.description}</p>
                     <p>Location: {property.location}</p>
-                    <p>URL: {property.url}</p>
                     <p>
                       Added date: {property.added.month} {property.added.day}{" "}
                       {property.added.year}
@@ -37,7 +41,7 @@ const Houses = ({ properties }) => {
           return null;
         })}
       </Row>
-    </div>
+    </Container>
   );
 };
 

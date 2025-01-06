@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { useDrag, useDrop } from "react-dnd";
 
+//component for draggable favourite items
 const DraggableFavourite = ({ property, children }) => {
   const [{ isDragging }, drag] = useDrag({
     type: "FAVOURITE",
@@ -24,6 +25,7 @@ const Favourites = ({
   handleClearFavourites,
   handleAddToFavourites,
 }) => {
+  //Set up the drop target for adding properties to favourites
   const [, drop] = useDrop({
     accept: "PROPERTY",
     drop: (item) => handleAddToFavourites(item.property),
@@ -32,7 +34,9 @@ const Favourites = ({
   return (
     <div ref={drop}>
       <div className="pt-3">
-        <h2>Favourites</h2>
+        <h2 className="border-bottom border-dark">Favourites</h2>
+
+        {/* clear all favourites button */}
         {favourites.length > 0 && (
           <button
             onClick={handleClearFavourites}
@@ -43,15 +47,17 @@ const Favourites = ({
         )}
       </div>
 
+      {/* If there are no favourites display the message. */}
       {favourites.length === 0 ? (
         <div className="pt-3">
           <p>No favourites added yet</p>
           <p>
             Drag a item in or Click "Add to favourites" button to save your
-            favourites for quick access 😉
+            favourites for quick access.
           </p>
         </div>
       ) : (
+        //Else display all the favourites
         favourites.map((property) => (
           <DraggableFavourite key={property.id} property={property}>
             <Card key={property.id} className="mb-2">
@@ -66,9 +72,7 @@ const Favourites = ({
                   <p>Type: {property.type}</p>
                   <p>Price: {property.price}</p>
                   <p>Bedrooms: {property.bedrooms}</p>
-                  <p>Tenure: {property.tenure}</p>
                   <p>Location: {property.location}</p>
-                  <p>URL: {property.url}</p>
                   <p>
                     Added date: {property.added.month} {property.added.day}{" "}
                     {property.added.year}
